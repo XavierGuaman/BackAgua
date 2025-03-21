@@ -7,10 +7,16 @@ package com.asotec.riesgos.controller;
 import com.asotec.riesgos.entity.GenUsuario;
 import com.asotec.riesgos.entity.GenUsuarioId;
 import com.asotec.riesgos.entity.NovedadesAbonados;
+import com.asotec.riesgos.entity.ObtenerInformacion;
+import com.asotec.riesgos.entity.SgfMensajes;
+import com.asotec.riesgos.entity.SjaControlSecuencia;
 import com.asotec.riesgos.entity.SjaNovedad;
 import com.asotec.riesgos.entity.SjaSector;
 import com.asotec.riesgos.service.IGenUsuarioService;
 import com.asotec.riesgos.service.INovedadesAbonadoService;
+import com.asotec.riesgos.service.IObtenerInformacionService;
+import com.asotec.riesgos.service.ISgfMensajesService;
+import com.asotec.riesgos.service.ISjaControlSecuenciaIService;
 import com.asotec.riesgos.service.ISjaNovedadService;
 import com.asotec.riesgos.util.Message;
 import com.asotec.riesgos.util.Response;
@@ -48,6 +54,15 @@ public class SjaNovedadController {
     @Autowired
     private INovedadesAbonadoService srvNovedades;
     
+    
+    @Autowired
+    private IObtenerInformacionService serviceInformacion;
+    
+    @Autowired
+    private ISjaControlSecuenciaIService serviceSecuencia;
+    
+    @Autowired
+    private ISgfMensajesService serviceMensajes;
     
      @RequestMapping(
             method = RequestMethod.POST,
@@ -111,7 +126,8 @@ public class SjaNovedadController {
             produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public ResponseEntity<Map<String, Object>> crearNovedad(
             @RequestParam(value = "token", required = true) String token,
-            @RequestBody SjaNovedad novedadBody
+            @RequestBody SjaNovedad novedadBody,
+            @RequestParam(value = "oficina", required = true) String oficina
     ){
     
         token = token.replace(" ", "+"); //a los espacios en blanco colocar +
@@ -136,6 +152,38 @@ public class SjaNovedadController {
             System.out.println("Novedad duplicada");
             return Response.get(Status.ERROR.get(), Message.ERROR.get(), nuevo, HttpStatus.OK);
         }
+         
+         ObtenerInformacion obj = serviceInformacion.getInfoSocio(novedadBody.getId().getCodMedidor(), usr.getId().getCodEmpresa());
+         SjaControlSecuencia ctr = serviceSecuencia.findOne(usr.getId().getCodEmpresa());
+         long secuenciaMensaje = ctr.getNumSecNovedad() + 1;
+         
+         SgfMensajes mensaje = new SgfMensajes();
+         mensaje.setNumMensaje(secuenciaMensaje);
+         mensaje.setCodSocio(obj.getCodAbonado());
+         mensaje.setCodTipoId(obj.getCodTipoId());
+         mensaje.setNumId(obj.getNumId());
+         mensaje.setNomSocio(obj.getNomAbonado());
+         mensaje.setTelCelular(obj.getTxtTelefono());
+         mensaje.setDirCorreo(obj.getTxtCorreo());
+         mensaje.setCodCuenta(novedadBody.getId().getCodMedidor());
+         mensaje.setTxtObservacion(novedadBody.getTxtNovedad());
+         mensaje.setValSubtotal1(obj.getValSaldo());
+         mensaje.setValTotal(obj.getValSaldo());
+         mensaje.setNumDiasMora(obj.getNumMesPendientes());
+         mensaje.setTxtOficina(oficina);
+         
+         try {
+            mensaje = serviceMensajes.create(mensaje);
+        } catch (Exception e) {
+            System.out.println("Mensaje duplicado");
+            return Response.get(Status.ERROR.get(), Message.ERROR.get(), nuevo, HttpStatus.OK);
+        }
+         
+         ctr.setNumSecNovedad(secuenciaMensaje);
+        serviceSecuencia.update(ctr);
+         
+         
+         
         return Response.get(Status.OK.get(), Message.OK.get(), nuevo, HttpStatus.OK);
     }
     

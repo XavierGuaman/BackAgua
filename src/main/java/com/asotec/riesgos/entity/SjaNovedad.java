@@ -24,6 +24,10 @@ public class SjaNovedad implements Serializable{
     private String txtNovedad;
     private String codUsuario;
     private Boolean stsNovedad;
+    private Long idNovedad;
+
+    
+    
 
     @EmbeddedId
     public SjaNovedadId getId() {
@@ -77,6 +81,15 @@ public class SjaNovedad implements Serializable{
 
     public void setStsNovedad(Boolean stsNovedad) {
         this.stsNovedad = stsNovedad;
+    }
+    
+    @Column(name = "id_novedad", length = 3)
+    public Long getIdNovedad() {
+        return idNovedad;
+    }
+
+    public void setIdNovedad(Long idNovedad) {
+        this.idNovedad = idNovedad;
     }
     
 }

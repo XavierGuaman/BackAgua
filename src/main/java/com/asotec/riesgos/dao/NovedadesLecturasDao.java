@@ -30,10 +30,10 @@ public class NovedadesLecturasDao extends GenericDao<NovedadesLecturas> implemen
 
     
     @Override
-    public List<NovedadesLecturas> obtenerNovedadesLecturas(List<String> filtros, long umbral, Date fecInicio, Date fecFinal, long sector) {
+    public List<NovedadesLecturas> obtenerNovedadesLecturas(List<String> filtros, long umbral, Date fecInicio, Date fecFinal, long sector, long codEmpresa) {
        try {
         String filtrosPG = "{" + String.join(",", filtros) + "}"; // Genera '{mayores,iguales}'
-        String sql = "SELECT * FROM obtener_novedades(CAST(? AS text[]), ?, ?, ?, ?)";
+        String sql = "SELECT * FROM obtener_novedades(CAST(? AS text[]), ?, ?, ?, ?, ?)";
 
         Query query = entityManager.createNativeQuery(sql, NovedadesLecturas.class);
         query.setParameter(1, filtrosPG);  // Pasamos como String con formato ARRAY{}
@@ -41,6 +41,7 @@ public class NovedadesLecturasDao extends GenericDao<NovedadesLecturas> implemen
         query.setParameter(3, fecInicio != null ? new Timestamp(fecInicio.getTime()) : null);
         query.setParameter(4, fecFinal != null ? new Timestamp(fecFinal.getTime()) : null);
         query.setParameter(5, sector);
+        query.setParameter(6, codEmpresa);
 
         return query.getResultList();
     } catch (Exception e) {

@@ -21,7 +21,7 @@ public class SjaControlSecuencia implements Serializable{
     
     private long codEmpresa;
     private long numSecUsuario;
-    private long numSecMedidor;
+    private long numSecNovedad;
     private long numSecSector;
     private long numSecEmpleado;
     private long numSecLectura;
@@ -57,14 +57,14 @@ public class SjaControlSecuencia implements Serializable{
         this.numSecUsuario = numSecUsuario;
     }
 
-    @Column(name = "num_sec_medidor", precision = 10, scale = 0)
-    public long getNumSecMedidor() {
-        return numSecMedidor;
+    @Column(name = "num_sec_novedad", precision = 10, scale = 0)
+    public long getNumSecNovedad() {
+        return numSecNovedad;
     }
 
     
-    public void setNumSecMedidor(long numSecMedidor) {
-        this.numSecMedidor = numSecMedidor;
+    public void setNumSecNovedad(long numSecNovedad) {
+        this.numSecNovedad = numSecNovedad;
     }
 
     @Column(name = "num_sec_Sector", precision = 10, scale = 0)

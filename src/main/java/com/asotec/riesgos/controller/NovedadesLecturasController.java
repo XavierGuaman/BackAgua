@@ -86,7 +86,7 @@ public class NovedadesLecturasController {
         List<NovedadesLecturas> resp;
         
         try {
-            resp = service.obtenerNovedadesLecturas(filtros, umbral, fechaInicialDate, fechaFinalDate, sector);
+            resp = service.obtenerNovedadesLecturas(filtros, umbral, fechaInicialDate, fechaFinalDate, sector, usr.getId().getCodEmpresa());
         } catch (Exception e) {
             resp = null;
         }

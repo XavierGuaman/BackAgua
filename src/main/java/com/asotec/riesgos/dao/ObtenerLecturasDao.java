@@ -28,7 +28,7 @@ public class ObtenerLecturasDao extends GenericDao<ObtenerLecturas> implements I
         try {
             // Crea la consulta StoredProcedure
              StoredProcedureQuery query = entityManager.createStoredProcedureQuery("obtener_lecturas", ObtenerLecturas.class);
-            query.registerStoredProcedureParameter(1, Long.class, ParameterMode.IN.IN);  // codEmpresa
+            query.registerStoredProcedureParameter(1, Long.class, ParameterMode.IN);  // codEmpresa
             query.registerStoredProcedureParameter(2, Long.class, ParameterMode.IN);  // fechaInicio
             query.registerStoredProcedureParameter(3, Long.class, ParameterMode.IN);  // fechaInicio
             query.registerStoredProcedureParameter(4, Long.class, ParameterMode.IN);  // fechaInicio

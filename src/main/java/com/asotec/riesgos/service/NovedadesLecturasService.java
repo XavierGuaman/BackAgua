@@ -27,8 +27,8 @@ public class NovedadesLecturasService extends GenericService<NovedadesLecturas> 
     }
     
     @Override
-    public List<NovedadesLecturas> obtenerNovedadesLecturas(List<String> filtros, long umbral, Date fecInicio, Date fecFinal, long sector) {
-        return dao.obtenerNovedadesLecturas(filtros, umbral, fecInicio, fecFinal, sector);
+    public List<NovedadesLecturas> obtenerNovedadesLecturas(List<String> filtros, long umbral, Date fecInicio, Date fecFinal, long sector, long codEmpresa) {
+        return dao.obtenerNovedadesLecturas(filtros, umbral, fecInicio, fecFinal, sector, codEmpresa);
     }
     
 }

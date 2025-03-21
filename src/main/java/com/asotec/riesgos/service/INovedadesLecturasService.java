@@ -13,5 +13,5 @@ import java.util.List;
  * @author rolan
  */
 public interface INovedadesLecturasService extends IGenericService<NovedadesLecturas> {
-    List<NovedadesLecturas> obtenerNovedadesLecturas(List<String> filtros, long umbral, Date fecInicio, Date fecFinal, long sector );
+    List<NovedadesLecturas> obtenerNovedadesLecturas(List<String> filtros, long umbral, Date fecInicio, Date fecFinal, long sector , long codEmpresa);
 }
