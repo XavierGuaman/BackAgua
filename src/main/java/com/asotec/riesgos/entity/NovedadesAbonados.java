@@ -25,6 +25,9 @@ public class NovedadesAbonados implements Serializable {
     private String codAbonado;
     private String nomAbonado;
     private String nomSector;
+    private long idNovedad;
+
+    
 
     @Column(name = "cod_empresa")
     public long getCodEmpresa() {
@@ -89,6 +92,15 @@ public class NovedadesAbonados implements Serializable {
 
     public void setNomSector(String nomSector) {
         this.nomSector = nomSector;
+    }
+    
+    @Column(name = "id_novedad")
+    public long getIdNovedad() {
+        return idNovedad;
+    }
+
+    public void setIdNovedad(long idNovedad) {
+        this.idNovedad = idNovedad;
     }
     
     

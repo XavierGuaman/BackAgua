@@ -1,6 +1,7 @@
 com\asotec\riesgos\entity\SjaControlId.class
 com\asotec\riesgos\service\ObtenerLecturasService.class
 com\asotec\riesgos\dao\AsignacionSectoresDao.class
+com\asotec\riesgos\service\IObtenerInformacionService.class
 com\asotec\riesgos\service\ObtenerMedidoresService.class
 com\asotec\riesgos\controller\SjaSectorLectorController.class
 com\asotec\riesgos\controller\SjaControlController.class
@@ -31,6 +32,7 @@ com\asotec\riesgos\entity\ObtenerMedidores.class
 com\asotec\riesgos\service\GenEmpleadoService.class
 com\asotec\riesgos\dao\SgfMensajesDao.class
 com\asotec\riesgos\service\IUsuarioEmpleadoService.class
+com\asotec\riesgos\entity\ObtenerInformacion.class
 com\asotec\riesgos\dao\IUsuarioEmpleadoDao.class
 com\asotec\riesgos\service\ISjaControlService.class
 com\asotec\riesgos\dao\MedidoresPendientesDao.class
@@ -42,6 +44,7 @@ com\asotec\riesgos\entity\ObtenerAbonados_.class
 com\asotec\riesgos\dao\SjaNovedadDao.class
 com\asotec\riesgos\service\SjaLecturaService.class
 com\asotec\riesgos\estructurasSeg3\IG01.class
+com\asotec\riesgos\config\MailConfig.class
 com\asotec\riesgos\resources\SecurityConfig.class
 com\asotec\riesgos\service\AsignacionSectoresService.class
 com\asotec\riesgos\entity\MedidoresPendientes.class
@@ -52,6 +55,7 @@ com\asotec\riesgos\estructurasSeg3\C03.class
 com\asotec\riesgos\controller\SrlTipoUsuarioController.class
 com\asotec\riesgos\service\ObtenerAbonadosService.class
 com\asotec\riesgos\entity\SjaAbonadoId.class
+com\asotec\riesgos\service\ObtenerInformacionService.class
 com\asotec\riesgos\entity\GenEmpleadoId.class
 com\asotec\riesgos\estructurasSeg3\C01.class
 com\asotec\riesgos\entity\NovedadesAbonados_.class
@@ -65,6 +69,7 @@ com\asotec\riesgos\entity\AsignacionSectores_.class
 com\asotec\riesgos\controller\PaisController.class
 com\asotec\riesgos\util\InputStreamWrapper.class
 com\asotec\riesgos\dao\IAsignacionSectoresDao.class
+com\asotec\riesgos\dao\IObtenerInformacionDao.class
 com\asotec\riesgos\service\NovedadesLecturasService.class
 com\asotec\riesgos\exception\NoResultException.class
 com\asotec\riesgos\dao\GenEmpleadoDao.class
@@ -99,6 +104,7 @@ com\asotec\riesgos\service\SjaControlSecuenciaIService.class
 com\asotec\riesgos\entity\SjaSectorLectorId_.class
 com\asotec\riesgos\exception\GlobalExceptionHandler.class
 com\asotec\riesgos\entity\ObtenerLecturas.class
+com\asotec\riesgos\service\EmailService.class
 com\asotec\riesgos\service\NovedadesAbonadoService.class
 com\asotec\riesgos\entity\SjaNovedad.class
 com\asotec\riesgos\entity\ObtenerAbonados.class
@@ -151,6 +157,7 @@ com\asotec\riesgos\service\ISjaNovedadService.class
 com\asotec\riesgos\util\Response.class
 com\asotec\riesgos\controller\SgfMensajesController.class
 com\asotec\riesgos\controller\MedidoresController.class
+com\asotec\riesgos\config\AppConfig.class
 com\asotec\riesgos\util\Respuesta.class
 com\asotec\riesgos\entity\SjaSectorId.class
 com\asotec\riesgos\service\SjaSectorService.class
@@ -168,7 +175,9 @@ com\asotec\riesgos\entity\NovedadesAbonados.class
 com\asotec\riesgos\entity\UsuarioEmpleado_.class
 com\asotec\riesgos\entity\NovedadesLecturas.class
 com\asotec\riesgos\entity\SgfSocio_.class
+com\asotec\riesgos\dao\ObtenerInformacionDao.class
 com\asotec\riesgos\dao\INovedadesAbonadosDao.class
+com\asotec\riesgos\entity\ObtenerInformacion_.class
 com\asotec\riesgos\entity\SjaControlId_.class
 com\asotec\riesgos\entity\SgfMensajes.class
 com\asotec\riesgos\entity\GenEmpleado.class

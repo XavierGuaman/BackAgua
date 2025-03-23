@@ -141,22 +141,23 @@ public class SjaNovedadController {
         genUsuarioId.setCodUsuario(usuario);
         target.setId(genUsuarioId);
         GenUsuario usr = srvUsuario.findByUsername(target);
+        
         if (usr == null) {
             return Response.get(Status.ERROR.get(), "No existe el usuario", null, HttpStatus.OK);
         }
         
+        ObtenerInformacion obj = serviceInformacion.getInfoSocio(novedadBody.getId().getCodMedidor(), usr.getId().getCodEmpresa());
+         SjaControlSecuencia ctr = serviceSecuencia.findOne(usr.getId().getCodEmpresa());
+         long secuenciaMensaje = ctr.getNumSecNovedad() + 1;
+        
          SjaNovedad nuevo = novedadBody;
+         nuevo.setIdNovedad(secuenciaMensaje);
          try {
             nuevo = service.create(nuevo);
         } catch (Exception e) {
             System.out.println("Novedad duplicada");
             return Response.get(Status.ERROR.get(), Message.ERROR.get(), nuevo, HttpStatus.OK);
         }
-         
-         ObtenerInformacion obj = serviceInformacion.getInfoSocio(novedadBody.getId().getCodMedidor(), usr.getId().getCodEmpresa());
-         SjaControlSecuencia ctr = serviceSecuencia.findOne(usr.getId().getCodEmpresa());
-         long secuenciaMensaje = ctr.getNumSecNovedad() + 1;
-         
          SgfMensajes mensaje = new SgfMensajes();
          mensaje.setNumMensaje(secuenciaMensaje);
          mensaje.setCodSocio(obj.getCodAbonado());
@@ -178,12 +179,8 @@ public class SjaNovedadController {
             System.out.println("Mensaje duplicado");
             return Response.get(Status.ERROR.get(), Message.ERROR.get(), nuevo, HttpStatus.OK);
         }
-         
          ctr.setNumSecNovedad(secuenciaMensaje);
         serviceSecuencia.update(ctr);
-         
-         
-         
         return Response.get(Status.OK.get(), Message.OK.get(), nuevo, HttpStatus.OK);
     }
     
@@ -209,15 +206,23 @@ public class SjaNovedadController {
         if (usr == null) {
             return Response.get(Status.ERROR.get(), "No existe el usuario", null, HttpStatus.OK);
         }
+        //actualizar novedad
         String msg;
         SjaNovedad actualiza = service.update(novedadBody);
-        
         if (actualiza == null) {
             
             msg = "Error, novedad no actualizada";
             return Response.get(Status.ERROR.get(), msg, null, HttpStatus.OK);
         }
-        return Response.get(Status.OK.get(), Message.OK.get(), actualiza, HttpStatus.OK);
+        //actualizar novedad;
+        SgfMensajes mensajeBuscado = serviceMensajes.filterByIdNovedad(novedadBody.getIdNovedad());
+        mensajeBuscado.setTxtObservacion(novedadBody.getTxtNovedad());
+        SgfMensajes actualizaMensaje = serviceMensajes.update(mensajeBuscado);
+        if (actualizaMensaje == null) {
+            msg = "Error, mensaje no actualizado";
+            return Response.get(Status.ERROR.get(), msg, null, HttpStatus.OK);
+        }
+        return Response.get(Status.OK.get(), Message.OK.get(), actualizaMensaje, HttpStatus.OK);
         
     
     }

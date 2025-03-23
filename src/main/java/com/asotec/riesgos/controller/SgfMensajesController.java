@@ -62,7 +62,6 @@ public class SgfMensajesController {
             @RequestParam(value = "token", required = true) String token,
             @RequestBody List<SgfMensajes> mensajesBody
     ) {
-
         token = token.replace(" ", "+"); //a los espacios en blanco colocar +
         String[] valida = Token.validar(token);
         if (valida[0].equals("0")) { //token ha expirado
@@ -77,15 +76,12 @@ public class SgfMensajesController {
         if (usr == null) {
             return Response.get(Status.ERROR.get(), "No existe el usuario", null, HttpStatus.OK);
         }
-
         Map<String, Object> response = new HashMap<>();
         List<SgfMensajes> mensajesGuardados = new ArrayList<>();
         List<SjaNovedad> novedadesGuardadas = new ArrayList<>();
-
         try {
             // Obtener la secuencia actual
             SjaControlSecuencia ctr = serviceSecuencia.findOne(usr.getId().getCodEmpresa());
-
             for (SgfMensajes mensaje : mensajesBody) {
                 // Incrementar la secuencia para cada mensaje
                 long secuenciaMensaje = ctr.getNumSecNovedad() + 1;
@@ -95,11 +91,6 @@ public class SgfMensajesController {
                     // Guardar el mensaje en la base de datos
                     SgfMensajes nuevoMensaje = service.create(mensaje);
                     mensajesGuardados.add(nuevoMensaje);
-                    
-                    
-                    
-                    
-                    
                     SjaNovedad novedad = new SjaNovedad();
                     SjaNovedadId novedadId = new SjaNovedadId();
                     novedadId.setCodEmpresa(usr.getId().getCodEmpresa());
@@ -113,32 +104,21 @@ public class SgfMensajesController {
                 novedad.setCodUsuario(usr.getId().getCodUsuario());
                 novedad.setStsNovedad(true);
                 novedad.setIdNovedad(secuenciaMensaje);
-
-                
                 serviceNovedad.create(novedad);
                 novedadesGuardadas.add(novedad);
-                    
-                    
-                    
-                    
-
-                    
                     ctr.setNumSecNovedad(secuenciaMensaje);
                     serviceSecuencia.update(ctr);
-
                 } catch (Exception e) {
                     System.out.println("Mensaje duplicado: " + mensaje);
                     response.put("error", "Mensaje duplicado");
                     return Response.get(Status.ERROR.get(), Message.ERROR.get(), mensaje, HttpStatus.OK);
                 }
             }
-
             response.put("status", Status.OK.get());
             response.put("message", Message.OK.get());
             response.put("mensajesGuardados", mensajesGuardados);
             response.put("novedadesGuardadas", novedadesGuardadas);
             return new ResponseEntity<>(response, HttpStatus.OK);
-
         } catch (Exception e) {
             e.printStackTrace();
             response.put("status", Status.ERROR.get());

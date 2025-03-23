@@ -11,5 +11,5 @@ import com.asotec.riesgos.entity.SgfMensajes;
  * @author rolan
  */
 public interface ISgfMensajesDao extends IGenericDao<SgfMensajes> {
-    
+    public SgfMensajes filterByIdNovedad(long idNovedad);
 }

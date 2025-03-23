@@ -24,5 +24,10 @@ public class SgfMensajesService extends GenericService<SgfMensajes> implements I
     public SgfMensajesService() {
         super();
     }
+
+    @Override
+    public SgfMensajes filterByIdNovedad(long idNovedad) {
+       return dao.filterByIdNovedad(idNovedad);
+    }
     
 }

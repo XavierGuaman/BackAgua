@@ -10,6 +10,7 @@ import com.asotec.riesgos.entity.SgfMensajes;
  *
  * @author rolan
  */
+
 public interface ISgfMensajesService extends IGenericService<SgfMensajes>{
-    
+    public SgfMensajes filterByIdNovedad(long idNovedad);
 }

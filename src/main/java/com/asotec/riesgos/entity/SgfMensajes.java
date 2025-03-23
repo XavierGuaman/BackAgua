@@ -31,6 +31,10 @@ public class SgfMensajes implements Serializable {
     private double valTotal;
     private long numDiasMora;
     private String txtOficina;
+    private boolean stsEnviado;
+
+    
+    
 
     @Id
     @Column(name = "num_mensaje")
@@ -153,5 +157,15 @@ public class SgfMensajes implements Serializable {
     public void setTxtOficina(String txtOficina) {
         this.txtOficina = txtOficina;
     }
+    
+    @Column(name = "sts_enviado")
+    public boolean isStsEnviado() {
+        return stsEnviado;
+    }
+
+    public void setStsEnviado(boolean stsEnviado) {
+        this.stsEnviado = stsEnviado;
+    }
+    
     
 }

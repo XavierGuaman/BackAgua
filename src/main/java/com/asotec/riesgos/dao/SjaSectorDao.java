@@ -42,7 +42,6 @@ public class SjaSectorDao extends GenericDao<SjaSector> implements ISjaSectorDao
     @Override
     public List<SjaSector> filterByEmpleadoMovil(long codEmpresa, long codEmpleado) {
         
-        System.out.println("LLega hasta aca");
         try {
             // Crea la consulta StoredProcedure
              StoredProcedureQuery query = entityManager.createStoredProcedureQuery("obtener_sectores_movil", SjaSector.class);
