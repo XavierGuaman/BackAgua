@@ -48,8 +48,8 @@ public class EmailService {
     public void checkAndSendEmails() {
         List<SgfMensajes> mensajes = entityManager.createQuery(
                 "SELECT m FROM SgfMensajes m WHERE m.stsEnviado = false", SgfMensajes.class)
-                .setFirstResult(pageNumber * PAGE_SIZE)  // Establecer la página y el tamaño del lote
-                .setMaxResults(PAGE_SIZE)  // Número de mensajes a traer en este ciclo
+                //.setFirstResult(pageNumber * PAGE_SIZE)  // Establecer la página y el tamaño del lote
+                //.setMaxResults(PAGE_SIZE)  // Número de mensajes a traer en este ciclo
                 .getResultList();
 
         if (!mensajes.isEmpty()) {

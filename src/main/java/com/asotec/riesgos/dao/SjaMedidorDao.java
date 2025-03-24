@@ -15,10 +15,7 @@ import javax.persistence.StoredProcedureQuery;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-/**
- *
- * @author ASOTEC
- */
+
 @Repository
 public class SjaMedidorDao extends GenericDao<SjaMedidor> implements ISjaMedidorDao {
 
