@@ -28,6 +28,11 @@ public class GenEmpresa implements java.io.Serializable{
     private String nomAbreviado;
     private Long numRuc;
     private Character stsEmpresa;
+    //private String txtEmail;
+    //private String codeAppTerceros;
+
+    
+    
     
 //    private String dirEmpresa;
 //    private Long numTelefono1;
@@ -136,6 +141,24 @@ public class GenEmpresa implements java.io.Serializable{
     public void setNumRuc(Long numRuc) {
         this.numRuc = numRuc;
     }
+    
+//   @Column(name = "txt_email")
+//    public String getTxtEmail() {
+//        return txtEmail;
+//    }
+//
+//    public void setTxtEmail(String txtEmail) {
+//        this.txtEmail = txtEmail;
+//    }
+//
+//    @Column(name = "cod_app_terceros")
+//    public String getCodeAppTerceros() {
+//        return codeAppTerceros;
+//    }
+//
+//    public void setCodeAppTerceros(String codeAppTerceros) {
+//        this.codeAppTerceros = codeAppTerceros;
+//    }
 
 //    @Column(name = "dir_empresa", length = 100)
 //    public String getDirEmpresa() {
