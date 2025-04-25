@@ -180,6 +180,9 @@ public class SjaLecturaController {
             @RequestParam(value = "token", required = true) String token,
             @RequestBody  List<LecturaUnificado> lecturas
     ) {
+        if(lecturas.isEmpty()){ 
+            return Response.get(Status.OK.get(), Message.NO_DATA.get(), null, HttpStatus.NO_CONTENT);
+        }
         Logger logger = Logger.getLogger(this.getClass().getName());
 
         token = token.replace(" ", "+"); //a los espacios en blanco colocar +
@@ -196,6 +199,7 @@ public class SjaLecturaController {
         if (usr == null) {
             return Response.get(Status.ERROR.get(), "No existe el usuario", null, HttpStatus.OK);
         }
+        
         System.out.println("Tamaño de lista: " + lecturas.size());
         int count = 0;
         String urlFoto;
@@ -244,17 +248,13 @@ public class SjaLecturaController {
             }
 
             try {
-                nuevo = service.create(nuevo);
+                nuevo = service.save(nuevo);
                 count++;
             } catch (Exception e) {
                 System.out.println("Recaudacion duplicado");
                 logger.info("\n\n\nEl error es: "+e+"\n\n\n");
-                return Response.get(Status.ERROR.get(), Message.ERROR.get(), nuevo, HttpStatus.OK);
-            } finally {
-
-                
+                //return Response.get(Status.ERROR.get(), Message.ERROR.get(), nuevo, HttpStatus.OK);
             }
-
         }
         logger.info("\n*****************************************************************\nLOG:  Total de lecturas procesadas: " + count+ "\nEl usuario es: "+usr.getId().getCodUsuario()+"\n************************************************************");
         System.out.println("tam lista procesada: "+count);

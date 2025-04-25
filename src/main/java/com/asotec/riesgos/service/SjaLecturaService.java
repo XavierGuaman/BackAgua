@@ -21,11 +21,11 @@ public class SjaLecturaService extends GenericService<SjaLectura> implements ISj
 
     @Autowired
     private ISjaLecturaDao dao;
+    
     public SjaLecturaService() {
         super();
     }
 
-    
     
     @Override
     public List<SjaLectura> filterByEmpresa(long codEmpresa) {
@@ -35,6 +35,11 @@ public class SjaLecturaService extends GenericService<SjaLectura> implements ISj
     @Override
     public SjaLectura filterLecturaByPeriodo(long codEmpresa, String codMedidor, long codPeriodoMes, long codPeriodoAnio) {
         return dao.filterLecturaByPeriodo(codEmpresa, codMedidor, codPeriodoMes, codPeriodoAnio);
+    }
+    
+    @Override
+    public SjaLectura save(SjaLectura lectura){
+        return dao.save(lectura);
     }
     
 }

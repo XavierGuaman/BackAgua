@@ -14,4 +14,5 @@ import java.util.List;
 public interface ISjaLecturaService extends IGenericService<SjaLectura>{
     public List<SjaLectura> filterByEmpresa(long codEmpresa);
     public SjaLectura filterLecturaByPeriodo(long codEmpresa, String codMedidor, long codPeriodoMes, long codPeriodoAnio);
+    public SjaLectura save(SjaLectura lectura);
 }

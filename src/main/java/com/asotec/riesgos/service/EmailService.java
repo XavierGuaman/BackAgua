@@ -70,7 +70,7 @@ public class EmailService {
                     MimeMessageHelper helper = new MimeMessageHelper(mimeMessage, true, "UTF-8");
 
                     helper.setTo(mensaje.getDirCorreo());
-                    helper.setSubject("NOTIFICACIÓN DE " + mensaje.getTxtOficina()); 
+                    helper.setSubject("INFORMACIÓN DE " + mensaje.getTxtOficina()); 
                     helper.setText(contenido, true);
                     mailSender.send(mimeMessage);
                     mensaje.setStsEnviado(true);

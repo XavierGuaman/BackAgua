@@ -56,5 +56,10 @@ public class SjaLecturaDao extends GenericDao<SjaLectura> implements ISjaLectura
             return null;
         }
     }
+    
+    @Override
+    public SjaLectura save(SjaLectura lectura){
+        return this.merge(lectura);
+    }
 
 }

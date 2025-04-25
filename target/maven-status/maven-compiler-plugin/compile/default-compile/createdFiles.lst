@@ -21,10 +21,12 @@ com\asotec\riesgos\estructurasSeg3\I01.class
 com\asotec\riesgos\controller\GenEmpleadoController.class
 com\asotec\riesgos\dao\ISjaSectorLectorDao.class
 com\asotec\riesgos\dao\ISrlTipoUsuarioDao.class
+com\asotec\riesgos\entity\nero\NeroApiCredential.class
 com\asotec\riesgos\entity\SjaAbonado_.class
 com\asotec\riesgos\estructurasGeneral\L01.class
 com\asotec\riesgos\service\IObtenerMedidoresService.class
 com\asotec\riesgos\controller\SjaNovedadController.class
+com\asotec\riesgos\controller\NeroApiController.class
 com\asotec\riesgos\entity\SjaControl.class
 com\asotec\riesgos\dao\MedidoresConDeudaDao.class
 com\asotec\riesgos\entity\SjaLecturaId.class
@@ -79,6 +81,7 @@ com\asotec\riesgos\dao\SjaAbonadoDao.class
 com\asotec\riesgos\entity\MedidoresPendientes_.class
 com\asotec\riesgos\entity\SjaLectura_.class
 com\asotec\riesgos\entity\GenUsuario_.class
+com\asotec\riesgos\entity\nero\LecturasOutput.class
 com\asotec\riesgos\rotef\Cuenta.class
 com\asotec\riesgos\util\Wrap.class
 com\asotec\riesgos\service\GenericService.class
@@ -160,6 +163,7 @@ com\asotec\riesgos\controller\MedidoresController.class
 com\asotec\riesgos\config\AppConfig.class
 com\asotec\riesgos\util\Respuesta.class
 com\asotec\riesgos\entity\SjaSectorId.class
+com\asotec\riesgos\entity\nero\LecturasInput.class
 com\asotec\riesgos\service\SjaSectorService.class
 com\asotec\riesgos\dao\ISjaNovedadDao.class
 com\asotec\riesgos\service\ISjaAbonadoService.class

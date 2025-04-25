@@ -28,15 +28,5 @@ public class LecturaUnificado {
 
     public void setFoto(byte[] foto) {
         this.foto = foto;
-    }
-
-    
-    
-    
-    
-
-    
-
-    
-    
+    } 
 }
