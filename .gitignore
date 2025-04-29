@@ -1,10 +1,64 @@
-# Default ignored files
-/shelf/
-/workspace.xml
-# Datasource local storage ignored files
-/dataSources/
-/dataSources.local.xml
-# Editor-based HTTP Client requests
-/httpRequests/
-#Target class generated
+# Compilación
 /target/
+*.class
+
+# Archivos de log
+*.log
+
+# Archivos de configuración específicos del entorno
+*.properties
+*.yml
+*.yaml
+*.xml
+!src/main/resources/**
+
+# IDEs
+## IntelliJ
+.idea/
+*.iml
+out/
+
+## Eclipse
+.project
+.classpath
+.settings/
+bin/
+
+## VS Code
+.vscode/
+
+# Archivos de sistema
+.DS_Store
+Thumbs.db
+
+# Archivos temporales
+*.tmp
+*.bak
+*.swp
+*.swo
+
+# Archivos generados por Maven
+/logs/
+release.properties
+dependency-reduced-pom.xml
+buildNumber.properties
+.mvn/timing.properties
+
+# Archivos del sistema operativo
+ehthumbs.db
+Icon?
+Desktop.ini
+
+# Archivos del entorno de ejecución
+*.war
+*.ear
+*.jar
+
+# Archivos de prueba
+/test-output/
+surefire-reports/
+jacoco.exec
+coverage-reports/
+
+# Git
+*.orig
