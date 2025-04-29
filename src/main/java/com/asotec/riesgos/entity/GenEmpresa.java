@@ -28,7 +28,6 @@ public class GenEmpresa implements java.io.Serializable{
     private String nomAbreviado;
     private Long numRuc;
     private Character stsEmpresa;
-    private String codFormatoImpLibreta;
     //private String txtEmail;
     //private String codeAppTerceros;
 
@@ -288,14 +287,14 @@ public class GenEmpresa implements java.io.Serializable{
 //        this.codMoneda = codMoneda;
 //    }
 //
-    @Column(name = "cod_formato_imp_libreta", length = 100)
-    public String getCodFormatoImpLibreta() {
-        return this.codFormatoImpLibreta;
-    }
-
-    public void setCodFormatoImpLibreta(String codFormatoImpLibreta) {
-        this.codFormatoImpLibreta = codFormatoImpLibreta;
-    }
+//    @Column(name = "cod_formato_imp_libreta", length = 100)
+//    public String getCodFormatoImpLibreta() {
+//        return this.codFormatoImpLibreta;
+//    }
+//
+//    public void setCodFormatoImpLibreta(String codFormatoImpLibreta) {
+//        this.codFormatoImpLibreta = codFormatoImpLibreta;
+//    }
 //
 //    @Column(name = "cod_inst_uaf", precision = 10, scale = 0)
 //    public Long getCodInstUaf() {

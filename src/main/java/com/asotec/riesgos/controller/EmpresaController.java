@@ -56,7 +56,6 @@ public class EmpresaController {
         } //envia al frontend
         return new ResponseEntity<>(resp, HttpStatus.OK);
     }
-    
     @RequestMapping(value = "/getCurrent",
             method = RequestMethod.POST,
             produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
