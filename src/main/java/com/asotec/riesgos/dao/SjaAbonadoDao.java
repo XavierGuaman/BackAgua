@@ -54,7 +54,7 @@ public class SjaAbonadoDao extends GenericDao<SjaAbonado> implements ISjaAbonado
     @Transactional
     public void createBatch(List<SjaAbonado> abonados) {
         for(int i = 0; i< abonados.size(); i++){
-            entityManager.persist(abonados.get(i));
+            entityManager.merge(abonados.get(i));
             if(i % 100 == 0 && i > 0){
                 entityManager.flush();
                 entityManager.clear();

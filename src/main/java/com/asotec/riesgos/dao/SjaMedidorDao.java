@@ -57,7 +57,7 @@ public class SjaMedidorDao extends GenericDao<SjaMedidor> implements ISjaMedidor
     @Transactional
     public void createBatch(List<SjaMedidor> medidores) {
         for (int i = 0; i < medidores.size(); i++) {
-            entityManager.persist(medidores.get(i));
+            entityManager.merge(medidores.get(i));
             if (i % 100 == 0 && i > 0) {
                 entityManager.flush();
                 entityManager.clear();

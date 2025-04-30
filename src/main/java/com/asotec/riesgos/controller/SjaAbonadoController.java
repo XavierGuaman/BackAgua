@@ -97,7 +97,6 @@ public class SjaAbonadoController {
             @RequestBody List<SjaAbonado> abonadosBody
     ){
         
-    
         if (abonadosBody == null || abonadosBody.isEmpty()) {
             System.out.println("La lista de abonados esta vacia");
         }
@@ -121,11 +120,11 @@ public class SjaAbonadoController {
         
         System.out.println("Tamaño de lista de abonados:  "+abonadosBody.size());
         
-        
+        //Cargar la lista si es para insertar o para actualizar
         for (SjaAbonado abonado:abonadosBody){
             
             SjaAbonadoId id = abonado.getId();
-            System.out.println("Procesa: "+id.getCodAbonado());
+            //System.out.println("Procesa: "+id.getCodAbonado());
             SjaAbonado abonadoBuscado = service.filterByEmpresaAndAbonado(id.getCodEmpresa(), id.getCodAbonado());
             if(abonadoBuscado == null){
                 abonadosParaInsertar.add(abonado);
@@ -133,6 +132,7 @@ public class SjaAbonadoController {
                 abonadosParaActualizar.add(abonado);
             }
         }
+        
         if(!abonadosParaInsertar.isEmpty()){
             service.createBatch(abonadosParaInsertar);
         }
